@@ -1,0 +1,376 @@
+---
+title: Getting started with Python + Jupyter Notebook
+author: Simon Schulte, Johan Velez
+jupyter: python3
+format: 
+  html: 
+    self-contained: true
+pandoc: 
+  toc: true
+  toc-depth: 3
+  number-sections: true
+date: last-modified
+theme: litera
+---
+
+
+# Installing Python Packages from your Jupyter Notebook
+
+## Using Conda
+
+If you have installed Python via the package manager Anaconda, to
+install a Python package you can use the following command in a Jupyter
+notebook:
+
+``` python
+conda install <package-name>
+```
+
+For example, to install the `numpy` package, you would run the following
+command from a Jupyter Notebook code cell:
+
+``` python
+conda install numpy
+```
+
+For some older versions of Jupyter Notebook running this command causes
+the following error: `SyntaxError: invalid syntax`.
+
+Then you can try adding a `%`-sign before `conda`:
+
+``` python
+%conda install <package-name>
+```
+
+## Using Pip
+
+If you have just installed Python (without Anaconda), you can use the
+following command in a Jupyter notebook to install a Python package:
+
+``` python
+pip install <package-name>
+```
+
+For example, to install the `matplotlib` package, you would run:
+
+``` python
+pip install matplotlib
+```
+
+For some older versions of Jupyter Notebook running this command causes
+the following error: `SyntaxError: invalid syntax`.
+
+Then you can try adding a `%`-sign before `pip`:
+
+``` python
+%pip install <package-name>
+```
+
+# Jupyter Notebook Keyboard Shortcuts
+
+Here are some of the most important keyboard shortcuts for working with
+Jupyter notebooks:
+
+-   `Enter`: Enter edit mode
+-   `Shift + Enter`: Run cell and move to the next one
+-   `Ctrl + Enter`: Run cell and stay on the current one
+-   `Esc`: Exit edit mode
+-   `A`: Insert cell above
+-   `B`: Insert cell below
+-   `D, D`: Delete selected cell
+-   `Z`: Undo last cell deletion
+-   `M`: Change cell to markdown
+-   `Y`: Change cell to code
+-   `Ctrl + S`: Save notebook
+-   `Ctrl + Shift + P`: Show command palette
+-   `Shift + Tab`: Show docstring (in edit or command mode)
+
+For a full list of keyboard shortcuts, you can click on the
+`Keyboard Shortcuts` option in the `Help` menu.
+
+# Python packages we use a lot
+
+There are two Python packages that we use a lot in our course: Pandas
+and NumPy. While some of their features overlap (e.g. matrix
+multiplication), others are unique to one of the packages (e.g. matrix
+inversion).
+
+**We recommend to use Pandas whenever possible**, because you keep the
+column-names and indices (=row-names) of your matrix/vector when you
+manipulate matrices in Pandas `DataFrame` format instead of NumPy's
+`arrays` or `matrix` format.
+
+## Pandas
+
+Pandas is a powerful library for data analysis in Python. It provides
+data structures for efficiently storing and manipulating large,
+heterogeneous datasets, as well as tools for data cleaning, merging,
+reshaping, and analysis.
+
+Here you find a cheatsheet explaining the main functionalities of
+Pandas: <https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf>
+
+To use Pandas in a Jupyter notebook, you can install it using either
+Conda or Pip (see the "Installing Python Packages" section above), and
+then import it using the following command:
+
+```{python}
+import pandas as pd
+```
+
+## NumPy
+
+NumPy is a fundamental package for scientific computing in Python. It
+provides powerful tools for working with arrays and matrices, as well as
+a large library of mathematical functions for linear algebra, Fourier
+analysis, and more.
+
+Here you find a cheatsheet explaining the main functionalities of
+Pandas:
+<https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf>
+
+To use NumPy in a Jupyter notebook, you can install it using either
+Conda or Pip (see the "Installing Python Packages" section above), and
+then import it using the following command:
+
+```{python}
+import numpy as np
+```
+
+# Converting between NumPy Arrays/Matrices and Pandas DataFrames
+
+## From NumPy to Pandas
+
+```{python}
+import numpy as np
+
+# First we create a NumPy array
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+arr
+```
+
+Note, a numpy array has not column- or row-names (=index)!
+
+Converting to Pandas DataFrame:
+
+```{python}
+import pandas as pd
+
+# create a Pandas DataFrame from a NumPy array
+df = pd.DataFrame(arr, index=['row1', 'row2', 'row3'], columns=['col1', 'col2', 'col3'])
+df
+```
+
+... but: Pandas DataFrame has column- and row-names!
+
+## From Pandas to NumPy
+
+```{python}
+import pandas as pd
+
+# create a Pandas DataFrame
+df = pd.DataFrame({'col1': [1, 2, 3], 'col2': [4, 5, 6], 'col3': [7, 8, 9]}, index=['row1', 'row2', 'row3'])
+
+```
+
+Convert to NumPy Array:
+
+```{python}
+# convert a Pandas DataFrame to a NumPy array
+arr = df.to_numpy()
+arr
+```
+
+# Indexing Data in Python
+
+## Pandas DataFrame
+
+### Using .iloc and .loc
+
+-   `.iloc` is used for index-based selection of rows and columns
+-   `.loc` is used for label-based selection of rows and columns
+
+```{python}
+import pandas as pd
+
+# create a sample dataframe
+df = pd.DataFrame({'col1': [1, 2, 3, 4], 'col2': [5, 6, 7, 8]}, index=['row1', 'row2', 'row3', 'row4'])
+print(df)
+```
+
+```{python}
+# select a single row using .iloc
+row = df.iloc[0]
+print(row)
+```
+
+```{python}
+# select a single column using .loc
+col = df.loc[:, 'col1']
+print(col)
+```
+
+```{python}
+# select a subset of rows and columns using .iloc
+subset = df.iloc[0:2, 0:2]
+print(subset)
+```
+
+```{python}
+# select a subset of rows and columns using .loc
+subset = df.loc[['row1', 'row2'], ['col1', 'col2']]
+print(subset)
+```
+
+## NumPy Array
+
+-   Indexing in NumPy arrays can be done using integer arrays, boolean
+    arrays, or slices
+-   Slicing is used to select a range of elements in the array
+
+```{python}
+import numpy as np
+
+# create a sample numpy array
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(arr)
+```
+
+```{python}
+# select the first row using integer indexing
+row = arr[0]
+print(row)
+```
+
+```{python}
+# select the first column using integer indexing
+col = arr[:, 0]
+print(col)
+```
+
+```{python}
+# select a subset of the array using slices
+subset = arr[0:2, 0:2]
+print(subset)
+```
+
+```{python}
+# select elements based on a boolean condition
+bool_arr = arr > 5
+subset = arr[bool_arr]
+print(subset)
+```
+
+<!-- # Plotting in Python -->
+
+<!-- Python provides a variety of powerful libraries for creating -->
+<!-- high-quality visualizations. Here are some commonly used libraries for -->
+<!-- plotting in Python: -->
+
+<!-- ## Matplotlib -->
+
+<!-- Matplotlib is a comprehensive library for creating static, animated, and -->
+<!-- interactive visualizations in Python. It provides a wide range of plot -->
+<!-- types, including line plots, scatter plots, bar plots, histograms, and -->
+<!-- more. Matplotlib is highly customizable, with fine-grained control over -->
+<!-- plot elements such as colors, markers, labels, and annotations. -->
+
+<!-- ### Example -->
+
+<!-- ```{python} -->
+<!-- import matplotlib.pyplot as plt -->
+<!-- import numpy as np -->
+<!-- import pandas as pd -->
+
+<!-- # Generate data and create a DataFrame -->
+<!-- df = pd.DataFrame({'x': np.linspace(0, 10, 100), 'y': np.sin(np.linspace(0, 10, 100))}) -->
+
+<!-- # Create a line plot -->
+<!-- plt.plot(df['x'], df['y']) -->
+
+<!-- # Add labels and a title -->
+<!-- plt.xlabel('x') -->
+<!-- plt.ylabel('y') -->
+<!-- plt.title('A Simple Plot') -->
+
+<!-- # Display the plot -->
+<!-- plt.show() -->
+<!-- ``` -->
+
+<!-- ## Seaborn -->
+
+<!-- Seaborn is a library for creating statistical visualizations in Python. -->
+<!-- It provides a variety of plot types, including scatter plots, line -->
+<!-- plots, bar plots, histograms, kernel density plots, and more. Seaborn is -->
+<!-- built on top of Matplotlib and provides a simpler interface for creating -->
+<!-- common statistical plots. -->
+
+<!-- ### Example -->
+
+<!-- ```{python} -->
+<!-- import seaborn as sns -->
+<!-- import numpy as np -->
+<!-- import pandas as pd -->
+<!-- import matplotlib.pyplot as plt -->
+
+<!-- # Generate data and create a DataFrame -->
+<!-- df = pd.DataFrame({'x': np.random.normal(size=100), 'y': 2 * np.random.normal(size=100) + np.random.normal(size=100)}) -->
+
+<!-- # Create a scatter plot with a regression line -->
+<!-- sns.regplot(data=df, x='x', y='y') -->
+
+<!-- # Display the plot -->
+<!-- plt.show() -->
+<!-- ``` -->
+
+<!-- ## Plotly -->
+
+<!-- Plotly is a library for creating interactive visualizations in Python. -->
+<!-- It provides a wide range of plot types, including scatter plots, line -->
+<!-- plots, bar plots, histograms, and more. Plotly is highly customizable, -->
+<!-- with fine-grained control over plot elements such as colors, markers, -->
+<!-- labels, and annotations. It also provides advanced features such as -->
+<!-- animations and interactivity. -->
+
+<!-- ### Example -->
+
+<!-- ```{python} -->
+<!-- import plotly.express as px -->
+<!-- import numpy as np -->
+<!-- import pandas as pd -->
+
+<!-- # Generate data and create a DataFrame -->
+<!-- df = pd.DataFrame({'x': np.random.normal(size=100), 'y': 2 * np.random.normal(size=100) + np.random.normal(size=100)}) -->
+
+<!-- # Create a scatter plot with a regression line -->
+<!-- fig = px.scatter(data_frame=df, x='x', y='y', trendline='ols') -->
+
+<!-- # Display the plot -->
+<!-- fig.show() -->
+<!-- ``` -->
+
+<!-- ## ggplot and plotnine -->
+
+<!-- ggplot and plotnine are libraries for creating graphics based on the -->
+<!-- grammar of graphics, a system for describing and constructing -->
+<!-- statistical graphics. They provide a powerful set of tools for creating -->
+<!-- complex, layered visualizations with fine-grained control over plot -->
+<!-- elements. ggplot is a library for R, while plotnine is a Python -->
+<!-- implementation of the same system. -->
+
+<!-- ### Example -->
+
+<!-- ```{python} -->
+<!-- from plotnine import * -->
+<!-- import numpy as np -->
+<!-- import pandas as pd -->
+
+<!-- # Generate data and create a DataFrame -->
+<!-- df = pd.DataFrame({'x': np.random.normal(size=100), 'y': 2 * np.random.normal(size=100) + np.random.normal(size=100)}) -->
+
+<!-- # Create a line plot with color and labels -->
+<!-- ( -->
+<!--   ggplot(data=df, mapping=aes(x='x', y='y')) +  -->
+<!--   geom_point(color='blue') -->
+<!--   ) -->
+<!-- ``` -->
