@@ -262,6 +262,74 @@ print(subset)
 ```
 
 
+# MultiIndex in Pandas
+
+In pandas, a MultiIndex allows you to have multiple levels of indexing in your DataFrame. This is useful when you want to work with higher-dimensional data or when you need to group and analyze data across multiple dimensions. Especially when working with Multi-Regional Input-Output (MRIO) Tables which have two dimensions (country and industry) this is feature is super helpful. 
+
+Here's an example of creating and working with a DataFrame that has a MultiIndex representing a simple MRIO with two countries and two regions.
+
+## Example: Creating a DataFrame with MultiIndex
+
+Let's create a 4x4 DataFrame with random integers, where both the columns and rows have a 2-dimensional index representing country and industry. 
+
+```{python}
+import pandas as pd
+import numpy as np
+
+# Define the index levels
+countries = ['country1', 'country2']
+industries = ['industry1', 'industry2']
+
+# Create the MultiIndex
+multi_index = pd.MultiIndex.from_product([countries, industries], names=['Country', 'Industry'])
+
+# Create a DataFrame with random integers
+data = np.random.randint(0, 10, size=(4, 4))
+df = pd.DataFrame(data, index=multi_index, columns=multi_index)
+
+# Print the DataFrame
+print(df)
+```
+
+
+
+In this example, we first define the index levels, `countries` and `industries`. Then, we create the `multi_index` by using the `pd.MultiIndex.from_product()` function and passing the index level arrays along with the `names` parameter to assign names to the levels.
+
+Next, we create a random integer array using `np.random.randint()`, and finally, we create the DataFrame `df` with the specified index and columns.
+
+## Working with MultiIndex
+
+Once you have a DataFrame with a MultiIndex, you can access and manipulate the data using various indexing and slicing techniques. Here are a few examples:
+
+```{python}
+# Accessing specific rows using the MultiIndex
+print(df.loc[('country1', 'industry1'),:])
+```
+
+```{python}
+# Accessing specific columns using the MultiIndex
+print(df.loc[:, ('country1', 'industry1')])
+```
+
+
+You can also aggregate data using the MultiIndex. Therefore, you first have to group the data using `groupby()`, and then append the mathematical operation, e.g. `.sum()`. The attribute `axis` determines whether the DataFrame is grouped along rows (0) or columns (1). The attribute `level` determines by which Index the data is grouped. 
+
+
+
+```{python}
+ # axis=0: aggregate rows
+print(df.groupby(axis=0,level=('Country')).sum())
+```
+
+```{python}
+# axis=1: aggregate columns
+print(df.groupby(axis=1,level=('Country')).sum()) 
+```
+
+
+These are just a few examples of working with MultiIndex in pandas. You can explore more advanced techniques and functions available in the pandas documentation.
+
+
 # Specifying Paths in Python with the `os` Library
 
 In Python, the `os` module provides functions for working with operating system functionalities, including file and directory operations. One common use case is working with file paths. 

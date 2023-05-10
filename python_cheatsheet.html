@@ -2638,16 +2638,21 @@ vertical-align: -.125em;
   </ul></li>
   <li><a href="#numpy-array" id="toc-numpy-array" class="nav-link" data-scroll-target="#numpy-array"><span class="toc-section-number">5.2</span>  NumPy Array</a></li>
   </ul></li>
-  <li><a href="#specifying-paths-in-python-with-the-os-library" id="toc-specifying-paths-in-python-with-the-os-library" class="nav-link" data-scroll-target="#specifying-paths-in-python-with-the-os-library"><span class="toc-section-number">6</span>  Specifying Paths in Python with the <code>os</code> Library</a>
+  <li><a href="#multiindex-in-pandas" id="toc-multiindex-in-pandas" class="nav-link" data-scroll-target="#multiindex-in-pandas"><span class="toc-section-number">6</span>  MultiIndex in Pandas</a>
   <ul class="collapse">
-  <li><a href="#joining-path-components" id="toc-joining-path-components" class="nav-link" data-scroll-target="#joining-path-components"><span class="toc-section-number">6.1</span>  Joining Path Components</a></li>
-  <li><a href="#getting-the-current-working-directory" id="toc-getting-the-current-working-directory" class="nav-link" data-scroll-target="#getting-the-current-working-directory"><span class="toc-section-number">6.2</span>  Getting the Current Working Directory</a></li>
-  <li><a href="#checking-if-a-path-exists" id="toc-checking-if-a-path-exists" class="nav-link" data-scroll-target="#checking-if-a-path-exists"><span class="toc-section-number">6.3</span>  Checking if a Path Exists</a></li>
-  <li><a href="#specifying-an-absolute-path-in-windows-with-the-os-library" id="toc-specifying-an-absolute-path-in-windows-with-the-os-library" class="nav-link" data-scroll-target="#specifying-an-absolute-path-in-windows-with-the-os-library"><span class="toc-section-number">6.4</span>  Specifying an Absolute Path in Windows with the <code>os</code> Library</a>
+  <li><a href="#example-creating-a-dataframe-with-multiindex" id="toc-example-creating-a-dataframe-with-multiindex" class="nav-link" data-scroll-target="#example-creating-a-dataframe-with-multiindex"><span class="toc-section-number">6.1</span>  Example: Creating a DataFrame with MultiIndex</a></li>
+  <li><a href="#working-with-multiindex" id="toc-working-with-multiindex" class="nav-link" data-scroll-target="#working-with-multiindex"><span class="toc-section-number">6.2</span>  Working with MultiIndex</a></li>
+  </ul></li>
+  <li><a href="#specifying-paths-in-python-with-the-os-library" id="toc-specifying-paths-in-python-with-the-os-library" class="nav-link" data-scroll-target="#specifying-paths-in-python-with-the-os-library"><span class="toc-section-number">7</span>  Specifying Paths in Python with the <code>os</code> Library</a>
   <ul class="collapse">
-  <li><a href="#absolute-path-in-windows" id="toc-absolute-path-in-windows" class="nav-link" data-scroll-target="#absolute-path-in-windows"><span class="toc-section-number">6.4.1</span>  Absolute Path in Windows</a></li>
-  <li><a href="#using-raw-string" id="toc-using-raw-string" class="nav-link" data-scroll-target="#using-raw-string"><span class="toc-section-number">6.4.2</span>  Using Raw String</a></li>
-  <li><a href="#converting-to-windows-path" id="toc-converting-to-windows-path" class="nav-link" data-scroll-target="#converting-to-windows-path"><span class="toc-section-number">6.4.3</span>  Converting to Windows Path</a></li>
+  <li><a href="#joining-path-components" id="toc-joining-path-components" class="nav-link" data-scroll-target="#joining-path-components"><span class="toc-section-number">7.1</span>  Joining Path Components</a></li>
+  <li><a href="#getting-the-current-working-directory" id="toc-getting-the-current-working-directory" class="nav-link" data-scroll-target="#getting-the-current-working-directory"><span class="toc-section-number">7.2</span>  Getting the Current Working Directory</a></li>
+  <li><a href="#checking-if-a-path-exists" id="toc-checking-if-a-path-exists" class="nav-link" data-scroll-target="#checking-if-a-path-exists"><span class="toc-section-number">7.3</span>  Checking if a Path Exists</a></li>
+  <li><a href="#specifying-an-absolute-path-in-windows-with-the-os-library" id="toc-specifying-an-absolute-path-in-windows-with-the-os-library" class="nav-link" data-scroll-target="#specifying-an-absolute-path-in-windows-with-the-os-library"><span class="toc-section-number">7.4</span>  Specifying an Absolute Path in Windows with the <code>os</code> Library</a>
+  <ul class="collapse">
+  <li><a href="#absolute-path-in-windows" id="toc-absolute-path-in-windows" class="nav-link" data-scroll-target="#absolute-path-in-windows"><span class="toc-section-number">7.4.1</span>  Absolute Path in Windows</a></li>
+  <li><a href="#using-raw-string" id="toc-using-raw-string" class="nav-link" data-scroll-target="#using-raw-string"><span class="toc-section-number">7.4.2</span>  Using Raw String</a></li>
+  <li><a href="#converting-to-windows-path" id="toc-converting-to-windows-path" class="nav-link" data-scroll-target="#converting-to-windows-path"><span class="toc-section-number">7.4.3</span>  Converting to Windows Path</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -2956,95 +2961,186 @@ row2     2     6</code></pre>
 </div>
 </section>
 </section>
-<section id="specifying-paths-in-python-with-the-os-library" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Specifying Paths in Python with the <code>os</code> Library</h1>
-<p>In Python, the <code>os</code> module provides functions for working with operating system functionalities, including file and directory operations. One common use case is working with file paths.</p>
-<section id="joining-path-components" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="joining-path-components"><span class="header-section-number">6.1</span> Joining Path Components</h2>
-<p>To join multiple path components into a single path, you can use the <code>os.path.join()</code> function. This is useful when you need to construct a path dynamically, especially when dealing with different operating systems:</p>
+<section id="multiindex-in-pandas" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> MultiIndex in Pandas</h1>
+<p>In pandas, a MultiIndex allows you to have multiple levels of indexing in your DataFrame. This is useful when you want to work with higher-dimensional data or when you need to group and analyze data across multiple dimensions. Especially when working with Multi-Regional Input-Output (MRIO) Tables which have two dimensions (country and industry) this is feature is super helpful.</p>
+<p>Here’s an example of creating and working with a DataFrame that has a MultiIndex representing a simple MRIO with two countries and two regions.</p>
+<section id="example-creating-a-dataframe-with-multiindex" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="example-creating-a-dataframe-with-multiindex"><span class="header-section-number">6.1</span> Example: Creating a DataFrame with MultiIndex</h2>
+<p>Let’s create a 4x4 DataFrame with random integers, where both the columns and rows have a 2-dimensional index representing country and industry.</p>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Joining path components</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(<span class="st">&#39;folder&#39;</span>, <span class="st">&#39;subfolder&#39;</span>, <span class="st">&#39;file.txt&#39;</span>)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the index levels</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> [<span class="st">&#39;country1&#39;</span>, <span class="st">&#39;country2&#39;</span>]</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>industries <span class="op">=</span> [<span class="st">&#39;industry1&#39;</span>, <span class="st">&#39;industry2&#39;</span>]</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the MultiIndex</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>multi_index <span class="op">=</span> pd.MultiIndex.from_product([countries, industries], names<span class="op">=</span>[<span class="st">&#39;Country&#39;</span>, <span class="st">&#39;Industry&#39;</span>])</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with random integers</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>multi_index, columns<span class="op">=</span>multi_index)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the DataFrame</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Country             country1            country2          
+Industry           industry1 industry2 industry1 industry2
+Country  Industry                                         
+country1 industry1         9         6         7         8
+         industry2         0         6         0         1
+country2 industry1         5         3         5         7
+         industry2         2         3         2         5</code></pre>
+</div>
+</div>
+<p>In this example, we first define the index levels, <code>countries</code> and <code>industries</code>. Then, we create the <code>multi_index</code> by using the <code>pd.MultiIndex.from_product()</code> function and passing the index level arrays along with the <code>names</code> parameter to assign names to the levels.</p>
+<p>Next, we create a random integer array using <code>np.random.randint()</code>, and finally, we create the DataFrame <code>df</code> with the specified index and columns.</p>
+</section>
+<section id="working-with-multiindex" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="working-with-multiindex"><span class="header-section-number">6.2</span> Working with MultiIndex</h2>
+<p>Once you have a DataFrame with a MultiIndex, you can access and manipulate the data using various indexing and slicing techniques. Here are a few examples:</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing specific rows using the MultiIndex</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.loc[(<span class="st">&#39;country1&#39;</span>, <span class="st">&#39;industry1&#39;</span>),:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Country   Industry 
+country1  industry1    9
+          industry2    6
+country2  industry1    7
+          industry2    8
+Name: (country1, industry1), dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing specific columns using the MultiIndex</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.loc[:, (<span class="st">&#39;country1&#39;</span>, <span class="st">&#39;industry1&#39;</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Country   Industry 
+country1  industry1    9
+          industry2    0
+country2  industry1    5
+          industry2    2
+Name: (country1, industry1), dtype: int64</code></pre>
+</div>
+</div>
+<p>You can also aggregate data using the MultiIndex. Therefore, you first have to group the data using <code>groupby()</code>, and then append the mathematical operation, e.g. <code>.sum()</code>. The attribute <code>axis</code> determines whether the DataFrame is grouped along rows (0) or columns (1). The attribute <code>level</code> determines by which Index the data is grouped.</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># axis=0: aggregate rows</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.groupby(axis<span class="op">=</span><span class="dv">0</span>,level<span class="op">=</span>(<span class="st">&#39;Country&#39;</span>)).<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Country   country1            country2          
+Industry industry1 industry2 industry1 industry2
+Country                                         
+country1         9        12         7         9
+country2         7         6         7        12</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># axis=1: aggregate columns</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.groupby(axis<span class="op">=</span><span class="dv">1</span>,level<span class="op">=</span>(<span class="st">&#39;Country&#39;</span>)).<span class="bu">sum</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Country             country1  country2
+Country  Industry                     
+country1 industry1        15        15
+         industry2         6         1
+country2 industry1         8        12
+         industry2         5         7</code></pre>
+</div>
+</div>
+<p>These are just a few examples of working with MultiIndex in pandas. You can explore more advanced techniques and functions available in the pandas documentation.</p>
+</section>
+</section>
+<section id="specifying-paths-in-python-with-the-os-library" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Specifying Paths in Python with the <code>os</code> Library</h1>
+<p>In Python, the <code>os</code> module provides functions for working with operating system functionalities, including file and directory operations. One common use case is working with file paths.</p>
+<section id="joining-path-components" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="joining-path-components"><span class="header-section-number">7.1</span> Joining Path Components</h2>
+<p>To join multiple path components into a single path, you can use the <code>os.path.join()</code> function. This is useful when you need to construct a path dynamically, especially when dealing with different operating systems:</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Joining path components</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> os.path.join(<span class="st">&#39;folder&#39;</span>, <span class="st">&#39;subfolder&#39;</span>, <span class="st">&#39;file.txt&#39;</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>folder/subfolder/file.txt</code></pre>
 </div>
 </div>
 </section>
-<section id="getting-the-current-working-directory" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="getting-the-current-working-directory"><span class="header-section-number">6.2</span> Getting the Current Working Directory</h2>
+<section id="getting-the-current-working-directory" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="getting-the-current-working-directory"><span class="header-section-number">7.2</span> Getting the Current Working Directory</h2>
 <p>To get the current working directory, you can use the <code>os.getcwd()</code> function:</p>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the current working directory</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>current_dir <span class="op">=</span> os.getcwd()</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(current_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the current working directory</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>current_dir <span class="op">=</span> os.getcwd()</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(current_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/home/simon/Documents/code/R/python_basics</code></pre>
 </div>
 </div>
 </section>
-<section id="checking-if-a-path-exists" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="checking-if-a-path-exists"><span class="header-section-number">6.3</span> Checking if a Path Exists</h2>
+<section id="checking-if-a-path-exists" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="checking-if-a-path-exists"><span class="header-section-number">7.3</span> Checking if a Path Exists</h2>
 <p>To check if a path exists, you can use the <code>os.path.exists()</code> function:</p>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking if a path exists</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">&#39;/path/to/file.txt&#39;</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>exists <span class="op">=</span> os.path.exists(path)</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exists)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking if a path exists</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">&#39;/path/to/file.txt&#39;</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>exists <span class="op">=</span> os.path.exists(path)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exists)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
 </div>
 </section>
-<section id="specifying-an-absolute-path-in-windows-with-the-os-library" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="specifying-an-absolute-path-in-windows-with-the-os-library"><span class="header-section-number">6.4</span> Specifying an Absolute Path in Windows with the <code>os</code> Library</h2>
+<section id="specifying-an-absolute-path-in-windows-with-the-os-library" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="specifying-an-absolute-path-in-windows-with-the-os-library"><span class="header-section-number">7.4</span> Specifying an Absolute Path in Windows with the <code>os</code> Library</h2>
 <p>In Windows, absolute paths are specified differently compared to other operating systems due to the use of drive letters (e.g., <code>C:</code>). The <code>os</code> module in Python provides functions to work with these paths.</p>
-<section id="absolute-path-in-windows" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="absolute-path-in-windows"><span class="header-section-number">6.4.1</span> Absolute Path in Windows</h3>
+<section id="absolute-path-in-windows" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="absolute-path-in-windows"><span class="header-section-number">7.4.1</span> Absolute Path in Windows</h3>
 <p>To specify an absolute path in Windows, you need to include the drive letter followed by a colon (<code>:</code>), and use double backslashes (<code>\\</code>) as the path separator. Here’s an example:</p>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify an absolute path in Windows</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>abs_path <span class="op">=</span> <span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">path</span><span class="ch">\\</span><span class="st">to</span><span class="ch">\\</span><span class="st">file.txt&quot;</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(abs_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify an absolute path in Windows</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>abs_path <span class="op">=</span> <span class="st">&quot;C:</span><span class="ch">\\</span><span class="st">path</span><span class="ch">\\</span><span class="st">to</span><span class="ch">\\</span><span class="st">file.txt&quot;</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(abs_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>C:\path\to\file.txt</code></pre>
 </div>
 </div>
 <p>Make sure to escape the backslashes by using a double backslash (<code>\\</code>).</p>
 </section>
-<section id="using-raw-string" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="using-raw-string"><span class="header-section-number">6.4.2</span> Using Raw String</h3>
+<section id="using-raw-string" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="using-raw-string"><span class="header-section-number">7.4.2</span> Using Raw String</h3>
 <p>Alternatively, you can use a raw string by adding an <code>r</code> prefix before the path string. This allows you to specify the path using single backslashes (<code>\</code>) as the path separator. Here’s an example:</p>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify an absolute path in Windows using a raw string</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>abs_path <span class="op">=</span> <span class="vs">r&quot;C:\path\to\file.txt&quot;</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(abs_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify an absolute path in Windows using a raw string</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>abs_path <span class="op">=</span> <span class="vs">r&quot;C:\path\to\file.txt&quot;</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(abs_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>C:\path\to\file.txt</code></pre>
 </div>
 </div>
 <p>Using a raw string is convenient as you don’t need to escape the backslashes.</p>
 </section>
-<section id="converting-to-windows-path" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="converting-to-windows-path"><span class="header-section-number">6.4.3</span> Converting to Windows Path</h3>
+<section id="converting-to-windows-path" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="converting-to-windows-path"><span class="header-section-number">7.4.3</span> Converting to Windows Path</h3>
 <p>If you’re working with a path string that follows the forward slash (<code>/</code>) path separator convention used in other operating systems (e.g., Linux, macOS), you can convert it to a Windows path using the <code>os.path.normpath()</code> function:</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a path to Windows format</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">&quot;/path/to/file.txt&quot;</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>windows_path <span class="op">=</span> os.path.normpath(path)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(windows_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a path to Windows format</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">&quot;/path/to/file.txt&quot;</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>windows_path <span class="op">=</span> os.path.normpath(path)</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(windows_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/path/to/file.txt</code></pre>
 </div>
