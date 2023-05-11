@@ -1,5 +1,6 @@
 project:
   title: "python_basics"
-
+  type: website
+  output-dir: docs
 editor: visual
 
