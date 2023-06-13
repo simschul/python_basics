@@ -433,6 +433,266 @@ Keep in mind that when working with paths in Python, it's recommended to use the
 
 
 
+# Plotting in Python
+
+Python provides several popular libraries for data visualization and plotting. Let's explore some of these libraries and create a bar plot using the example data.
+
+## Example Data
+
+Let's consider an example DataFrame with two columns: Country and Emissions. This data represents the emissions of each country.
+
+```{python}
+import pandas as pd
+
+data = {
+    'Country': ['USA', 'China', 'Russia', 'Germany', 'India'],
+    'Emissions': [5500, 8500, 4300, 3700, 3000]
+}
+
+df = pd.DataFrame(data)
+
+```
+
+## Matplotlib
+
+Matplotlib is a widely used plotting library in Python. It provides a flexible and comprehensive set of functions for creating various types of plots.
+
+```{python}
+import matplotlib.pyplot as plt
+
+plt.bar(df['Country'], df['Emissions'])
+plt.xlabel('Country')
+plt.ylabel('Emissions')
+plt.title('Emissions by Country (Matplotlib)')
+plt.show()
+
+```
+
+<!-- ## Seaborn -->
+
+<!-- Seaborn is a high-level library built on top of Matplotlib. It provides a simplified interface for creating visually appealing statistical graphics. -->
+
+<!-- ```{python} -->
+<!-- import seaborn as sns -->
+
+<!-- sns.barplot(data=df, x='Country', y='Emissions') -->
+<!-- plt.xlabel('Country') -->
+<!-- plt.ylabel('Emissions') -->
+<!-- plt.title('Emissions by Country (Seaborn)') -->
+<!-- plt.show() -->
+
+<!-- ``` -->
+
+## Plotly
+
+Plotly is an interactive plotting library that allows you to create interactive, web-based visualizations. It provides a range of graph types and customization options.
+
+
+
+
+```{python}
+import plotly.express as px
+
+fig = px.bar(df, x='Country', y='Emissions', title='Emissions by Country (Plotly)')
+fig.show()
+
+```
+
+## Plotnine (ggplot)
+
+Plotnine is a Python implementation of the popular R library ggplot2. It follows the grammar of graphics approach and provides a powerful and flexible system for creating visually appealing plots.
+
+```{python}
+from plotnine import ggplot, aes, geom_bar, labs
+
+(
+  ggplot(df, aes(x='Country', y='Emissions')) + 
+      geom_bar(stat='identity') + 
+      labs(title='Emissions by Country (Plotnine)')
+)
+```
+
+In the example above, we use the example data to create a bar plot for emissions using each library. Matplotlib, Seaborn, Plotly, and Plotnine (ggplot) all generate the same bar plot, but they offer different levels of customization and interactivity.
+
+These are just a few examples of the many plotting libraries available in Python. Depending on your specific needs and preferences, you can explore other libraries such as Bokeh, Altair, or Plotly Express to create various types of visualizations.
+
+Remember to install the necessary libraries using `pip` or `conda` before using them in your code.
+
+
+
+# For-Loop in Python
+
+In Python, a for-loop is used to iterate over a sequence of elements or to perform a set of instructions repeatedly for a specific number of times. The basic syntax of a for-loop in Python is as follows:
+
+```python
+for variable in sequence:
+    # Code to be executed for each element
+```
+
+Let's break down the components of a for-loop:
+
+- `variable`: This is a variable that takes on the value of each element in the sequence, one at a time, during each iteration of the loop.
+
+- `sequence`: This can be any iterable object such as a list, tuple, string, or range. The loop iterates over each element in the sequence.
+
+- `Code to be executed for each element`: This is the block of code that is executed for each element in the sequence. It can include one or more statements.
+
+Here's an example that demonstrates the usage of a for-loop:
+
+```{python}
+fruits = ['apple', 'banana', 'cherry']
+
+for fruit in fruits:
+    print(fruit)
+```
+
+
+In this example, we have a list of fruits. The for-loop iterates over each fruit in the list and prints it.
+
+You can also use the `range()` function to generate a sequence of numbers and iterate over them using a for-loop. Here's an example:
+
+```{python}
+for num in range(1, 6):
+    print(num)
+```
+
+
+In this case, the for-loop iterates over the numbers from 1 to 5 (inclusive) and prints each number.
+
+For-loops are powerful constructs in Python that allow you to perform repetitive tasks efficiently. They are commonly used when you have a known number of iterations or when you need to iterate over a sequence of elements.
+
+Remember to properly indent the code block within the for-loop to indicate the scope of the loop. The indentation is typically four spaces or a tab.
+
+You can also use the `break` and `continue` statements within a for-loop to control the flow of execution.
+
+Experiment with for-loops to iterate over different sequences and perform various operations within the loop. It's a fundamental construct in Python programming that you'll frequently encounter and utilize.
+
+
+# Functions in Python
+
+Functions are reusable blocks of code that perform a specific task. They help organize code, promote code reuse, and make it easier to understand and maintain. In Python, you can define and use functions. Let's explore how to work with functions in Python.
+
+## Defining Functions
+
+To define a function in Python, you use the `def` keyword followed by the function name and parentheses. You can also specify parameters inside the parentheses if the function requires input values. The function body is indented below the function definition line.
+
+```{python}
+def greet():
+    print("Hello, world!")
+
+def add_numbers(a, b):
+    return a + b
+```
+
+In this example, we define two functions. The `greet()` function doesn't take any parameters and simply prints a greeting. The `add_numbers()` function takes two parameters `a` and `b` and returns their sum.
+
+## Using Functions
+
+Once a function is defined, you can use it by calling its name followed by parentheses. If the function expects parameters, you can pass the necessary values inside the parentheses.
+
+```{python}
+greet()  # Output: Hello, world!
+
+result = add_numbers(5, 3)
+print(result)  # Output: 8
+```
+
+In this example, we call the `greet()` function, which prints the greeting message. Then, we call the `add_numbers()` function with arguments `5` and `3`, and the returned result is stored in the `result` variable. Finally, we print the value of `result`, which is `8`.
+
+## Lambda Functions
+
+In Python, a lambda function is a small anonymous function that doesn't have a name. It can take any number of arguments but can only have one expression. Lambda functions are typically used when you need a simple, one-line function.
+
+```{python}
+add = lambda x, y: x + y
+result = add(2, 3)
+print(result)  # Output: 5
+```
+
+In this example, we define a lambda function `add` that takes two arguments `x` and `y` and returns their sum. We then call the lambda function and store the result in the `result` variable. Finally, we print the value of `result`, which is `5`.
+
+Lambda functions are useful when you need a function for a short, simple operation and don't want to define a separate named function.
+
+
+
+
+
+<!-- # Object-Oriented Programming in Python -->
+
+<!-- Python is an object-oriented programming language, which means that it supports the concepts of objects, classes, methods, functions, and attributes. This paradigm organizes code around the idea of objects, which are instances of classes. -->
+
+<!-- ## Objects -->
+
+<!-- In Python, an object is a runtime entity that encapsulates data (attributes) and behavior (methods). It represents a particular instance of a class. Objects are created from classes and can interact with each other. -->
+
+<!-- ```{python} -->
+<!-- # Creating an object -->
+<!-- class MyClass: -->
+<!--     pass -->
+
+<!-- obj = MyClass()  # Creating an object of MyClass -->
+<!-- ``` -->
+
+<!-- ## Methods -->
+
+<!-- Methods are functions defined within a class and are associated with objects. They define the behavior of the objects and can access and modify the object's attributes. Methods are called using dot notation on an object. -->
+
+<!-- ```{python} -->
+
+<!-- # Defining a method -->
+<!-- class MyClass: -->
+<!--     def my_method(self): -->
+<!--         print("Hello, World!") -->
+
+<!-- obj = MyClass()  # Creating an object of MyClass -->
+<!-- obj.my_method()  # Calling the method -->
+<!-- ``` -->
+
+<!-- ## Attributes -->
+
+<!-- Attributes are data associated with an object. They represent the state of an object and can be variables or properties. Attributes can be accessed and modified using dot notation on an object. -->
+
+
+<!-- ```{python} -->
+<!-- # Adding attributes to an object -->
+<!-- class MyClass: -->
+<!--     pass -->
+
+<!-- obj = MyClass()  # Creating an object of MyClass -->
+<!-- obj.attribute = 42  # Adding an attribute -->
+<!-- print(obj.attribute)  # Accessing the attribute -->
+
+<!-- ``` -->
+
+<!-- ## Class -->
+
+<!-- A class is a blueprint or template for creating objects. It defines the structure and behavior that the objects will have. A class encapsulates data (attributes) and functions (methods) that operate on that data. Objects are created from classes using the class name followed by parentheses. -->
+
+<!-- ``` {python} -->
+
+<!-- # Creating a class and objects -->
+<!-- class MyClass: -->
+<!--     def __init__(self, attribute): -->
+<!--         self.attribute = attribute -->
+
+<!--     def my_method(self): -->
+<!--         print("Hello, World!") -->
+
+<!-- obj1 = MyClass(42)  # Creating an object of MyClass -->
+<!-- obj2 = MyClass(100)  # Creating another object of MyClass -->
+
+<!-- print(obj1.attribute)  # Accessing the attribute of obj1 -->
+<!-- obj1.my_method()  # Calling the method of obj1 -->
+
+<!-- print(obj2.attribute)  # Accessing the attribute of obj2 -->
+<!-- obj2.my_method()  # Calling the method of obj2 -->
+<!-- ``` -->
+
+<!-- In the example above, we define a class MyClass with an attribute attribute, a method my_method, and a constructor __init__ that initializes the attribute. We create two objects obj1 and obj2 from the class, and we can access the attributes and call the methods using dot notation. -->
+
+<!-- Object-oriented programming allows for code organization, reusability, and modularity. It promotes the concept of objects as self-contained entities with their own behavior and state. -->
+
+
 <!-- # Plotting in Python -->
 
 <!-- Python provides a variety of powerful libraries for creating -->

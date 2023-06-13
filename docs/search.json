@@ -4,7 +4,21 @@
     "href": "python_cheatsheet.html",
     "title": "Getting started with Python + Jupyter Notebook",
     "section": "",
-    "text": "If you have installed Python via the package manager Anaconda, to install a Python package you can use the following command in a Jupyter notebook:\nconda install <package-name>\nFor example, to install the numpy package, you would run the following command from a Jupyter Notebook code cell:\nconda install numpy\nFor some older versions of Jupyter Notebook running this command causes the following error: SyntaxError: invalid syntax.\nThen you can try adding a %-sign before conda:\n%conda install <package-name>\n\n\n\nIf you have just installed Python (without Anaconda), you can use the following command in a Jupyter notebook to install a Python package:\npip install <package-name>\nFor example, to install the matplotlib package, you would run:\npip install matplotlib\nFor some older versions of Jupyter Notebook running this command causes the following error: SyntaxError: invalid syntax.\nThen you can try adding a %-sign before pip:\n%pip install <package-name>"
+    "text": "If you have installed Python via the package manager Anaconda, to install a Python package you can use the following command in a Jupyter notebook:\nconda install &lt;package-name&gt;\nFor example, to install the numpy package, you would run the following command from a Jupyter Notebook code cell:\nconda install numpy\nFor some older versions of Jupyter Notebook running this command causes the following error: SyntaxError: invalid syntax.\nThen you can try adding a %-sign before conda:\n%conda install &lt;package-name&gt;\n\n\n\nIf you have just installed Python (without Anaconda), you can use the following command in a Jupyter notebook to install a Python package:\npip install &lt;package-name&gt;\nFor example, to install the matplotlib package, you would run:\npip install matplotlib\nFor some older versions of Jupyter Notebook running this command causes the following error: SyntaxError: invalid syntax.\nThen you can try adding a %-sign before pip:\n%pip install &lt;package-name&gt;"
+  },
+  {
+    "objectID": "python_cheatsheet.html#using-conda",
+    "href": "python_cheatsheet.html#using-conda",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "",
+    "text": "If you have installed Python via the package manager Anaconda, to install a Python package you can use the following command in a Jupyter notebook:\nconda install &lt;package-name&gt;\nFor example, to install the numpy package, you would run the following command from a Jupyter Notebook code cell:\nconda install numpy\nFor some older versions of Jupyter Notebook running this command causes the following error: SyntaxError: invalid syntax.\nThen you can try adding a %-sign before conda:\n%conda install &lt;package-name&gt;"
+  },
+  {
+    "objectID": "python_cheatsheet.html#using-pip",
+    "href": "python_cheatsheet.html#using-pip",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "",
+    "text": "If you have just installed Python (without Anaconda), you can use the following command in a Jupyter notebook to install a Python package:\npip install &lt;package-name&gt;\nFor example, to install the matplotlib package, you would run:\npip install matplotlib\nFor some older versions of Jupyter Notebook running this command causes the following error: SyntaxError: invalid syntax.\nThen you can try adding a %-sign before pip:\n%pip install &lt;package-name&gt;"
   },
   {
     "objectID": "python_cheatsheet.html#pandas",
@@ -25,7 +39,7 @@
     "href": "python_cheatsheet.html#from-numpy-to-pandas",
     "title": "Getting started with Python + Jupyter Notebook",
     "section": "4.1 From NumPy to Pandas",
-    "text": "4.1 From NumPy to Pandas\n\nimport numpy as np\n\n# First we create a NumPy array\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\narr\n\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\nNote, a numpy array has not column- or row-names (=index)!\nConverting to Pandas DataFrame:\n\nimport pandas as pd\n\n# create a Pandas DataFrame from a NumPy array\ndf = pd.DataFrame(arr, index=['row1', 'row2', 'row3'], columns=['col1', 'col2', 'col3'])\ndf\n\n\n\n\n\n  \n    \n      \n      col1\n      col2\n      col3\n    \n  \n  \n    \n      row1\n      1\n      2\n      3\n    \n    \n      row2\n      4\n      5\n      6\n    \n    \n      row3\n      7\n      8\n      9\n    \n  \n\n\n\n\n… but: Pandas DataFrame has column- and row-names!"
+    "text": "4.1 From NumPy to Pandas\n\nimport numpy as np\n\n# First we create a NumPy array\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\narr\n\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\nNote, a numpy array has not column- or row-names (=index)!\nConverting to Pandas DataFrame:\n\nimport pandas as pd\n\n# create a Pandas DataFrame from a NumPy array\ndf = pd.DataFrame(arr, index=['row1', 'row2', 'row3'], columns=['col1', 'col2', 'col3'])\ndf\n\n\n\n\n\n\n\n\ncol1\ncol2\ncol3\n\n\n\n\nrow1\n1\n2\n3\n\n\nrow2\n4\n5\n6\n\n\nrow3\n7\n8\n9\n\n\n\n\n\n\n\n… but: Pandas DataFrame has column- and row-names!"
   },
   {
     "objectID": "python_cheatsheet.html#from-pandas-to-numpy",
@@ -46,21 +60,21 @@
     "href": "python_cheatsheet.html#numpy-array",
     "title": "Getting started with Python + Jupyter Notebook",
     "section": "5.2 NumPy Array",
-    "text": "5.2 NumPy Array\n\nIndexing in NumPy arrays can be done using integer arrays, boolean arrays, or slices\nSlicing is used to select a range of elements in the array\n\n\nimport numpy as np\n\n# create a sample numpy array\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nprint(arr)\n\n[[1 2 3]\n [4 5 6]\n [7 8 9]]\n\n\n\n# select the first row using integer indexing\nrow = arr[0]\nprint(row)\n\n[1 2 3]\n\n\n\n# select the first column using integer indexing\ncol = arr[:, 0]\nprint(col)\n\n[1 4 7]\n\n\n\n# select a subset of the array using slices\nsubset = arr[0:2, 0:2]\nprint(subset)\n\n[[1 2]\n [4 5]]\n\n\n\n# select elements based on a boolean condition\nbool_arr = arr > 5\nsubset = arr[bool_arr]\nprint(subset)\n\n[6 7 8 9]"
+    "text": "5.2 NumPy Array\n\nIndexing in NumPy arrays can be done using integer arrays, boolean arrays, or slices\nSlicing is used to select a range of elements in the array\n\n\nimport numpy as np\n\n# create a sample numpy array\narr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nprint(arr)\n\n[[1 2 3]\n [4 5 6]\n [7 8 9]]\n\n\n\n# select the first row using integer indexing\nrow = arr[0]\nprint(row)\n\n[1 2 3]\n\n\n\n# select the first column using integer indexing\ncol = arr[:, 0]\nprint(col)\n\n[1 4 7]\n\n\n\n# select a subset of the array using slices\nsubset = arr[0:2, 0:2]\nprint(subset)\n\n[[1 2]\n [4 5]]\n\n\n\n# select elements based on a boolean condition\nbool_arr = arr &gt; 5\nsubset = arr[bool_arr]\nprint(subset)\n\n[6 7 8 9]"
   },
   {
     "objectID": "python_cheatsheet.html#example-creating-a-dataframe-with-multiindex",
     "href": "python_cheatsheet.html#example-creating-a-dataframe-with-multiindex",
     "title": "Getting started with Python + Jupyter Notebook",
     "section": "6.1 Example: Creating a DataFrame with MultiIndex",
-    "text": "6.1 Example: Creating a DataFrame with MultiIndex\nLet’s create a 4x4 DataFrame with random integers, where both the columns and rows have a 2-dimensional index representing country and industry.\n\nimport pandas as pd\nimport numpy as np\n\n# Define the index levels\ncountries = ['country1', 'country2']\nindustries = ['industry1', 'industry2']\n\n# Create the MultiIndex\nmulti_index = pd.MultiIndex.from_product([countries, industries], names=['Country', 'Industry'])\n\n# Create a DataFrame with random integers\ndata = np.random.randint(0, 10, size=(4, 4))\ndf = pd.DataFrame(data, index=multi_index, columns=multi_index)\n\n# Print the DataFrame\nprint(df)\n\nCountry             country1            country2          \nIndustry           industry1 industry2 industry1 industry2\nCountry  Industry                                         \ncountry1 industry1         5         9         7         4\n         industry2         2         4         8         4\ncountry2 industry1         0         6         1         0\n         industry2         9         7         9         5\n\n\nIn this example, we first define the index levels, countries and industries. Then, we create the multi_index by using the pd.MultiIndex.from_product() function and passing the index level arrays along with the names parameter to assign names to the levels.\nNext, we create a random integer array using np.random.randint(), and finally, we create the DataFrame df with the specified index and columns."
+    "text": "6.1 Example: Creating a DataFrame with MultiIndex\nLet’s create a 4x4 DataFrame with random integers, where both the columns and rows have a 2-dimensional index representing country and industry.\n\nimport pandas as pd\nimport numpy as np\n\n# Define the index levels\ncountries = ['country1', 'country2']\nindustries = ['industry1', 'industry2']\n\n# Create the MultiIndex\nmulti_index = pd.MultiIndex.from_product([countries, industries], names=['Country', 'Industry'])\n\n# Create a DataFrame with random integers\ndata = np.random.randint(0, 10, size=(4, 4))\ndf = pd.DataFrame(data, index=multi_index, columns=multi_index)\n\n# Print the DataFrame\nprint(df)\n\nCountry             country1            country2          \nIndustry           industry1 industry2 industry1 industry2\nCountry  Industry                                         \ncountry1 industry1         7         6         1         3\n         industry2         0         3         1         1\ncountry2 industry1         8         8         6         0\n         industry2         6         8         3         7\n\n\nIn this example, we first define the index levels, countries and industries. Then, we create the multi_index by using the pd.MultiIndex.from_product() function and passing the index level arrays along with the names parameter to assign names to the levels.\nNext, we create a random integer array using np.random.randint(), and finally, we create the DataFrame df with the specified index and columns."
   },
   {
     "objectID": "python_cheatsheet.html#working-with-multiindex",
     "href": "python_cheatsheet.html#working-with-multiindex",
     "title": "Getting started with Python + Jupyter Notebook",
     "section": "6.2 Working with MultiIndex",
-    "text": "6.2 Working with MultiIndex\nOnce you have a DataFrame with a MultiIndex, you can access and manipulate the data using various indexing and slicing techniques. Here are a few examples:\n\n# Accessing specific rows using the MultiIndex\nprint(df.loc[('country1', 'industry1'),:])\n\nCountry   Industry \ncountry1  industry1    5\n          industry2    9\ncountry2  industry1    7\n          industry2    4\nName: (country1, industry1), dtype: int64\n\n\n\n# Accessing specific columns using the MultiIndex\nprint(df.loc[:, ('country1', 'industry1')])\n\nCountry   Industry \ncountry1  industry1    5\n          industry2    2\ncountry2  industry1    0\n          industry2    9\nName: (country1, industry1), dtype: int64\n\n\nYou can also aggregate data using the MultiIndex. Therefore, you first have to group the data using groupby(), and then append the mathematical operation, e.g. .sum(). The attribute axis determines whether the DataFrame is grouped along rows (0) or columns (1). The attribute level determines by which Index the data is grouped.\n\n # axis=0: aggregate rows\nprint(df.groupby(axis=0,level=('Country')).sum())\n\nCountry   country1            country2          \nIndustry industry1 industry2 industry1 industry2\nCountry                                         \ncountry1         7        13        15         8\ncountry2         9        13        10         5\n\n\n\n# axis=1: aggregate columns\nprint(df.groupby(axis=1,level=('Country')).sum()) \n\nCountry             country1  country2\nCountry  Industry                     \ncountry1 industry1        14        11\n         industry2         6        12\ncountry2 industry1         6         1\n         industry2        16        14\n\n\nThese are just a few examples of working with MultiIndex in pandas. You can explore more advanced techniques and functions available in the pandas documentation."
+    "text": "6.2 Working with MultiIndex\nOnce you have a DataFrame with a MultiIndex, you can access and manipulate the data using various indexing and slicing techniques. Here are a few examples:\n\n# Accessing specific rows using the MultiIndex\nprint(df.loc[('country1', 'industry1'),:])\n\nCountry   Industry \ncountry1  industry1    7\n          industry2    6\ncountry2  industry1    1\n          industry2    3\nName: (country1, industry1), dtype: int64\n\n\n\n# Accessing specific columns using the MultiIndex\nprint(df.loc[:, ('country1', 'industry1')])\n\nCountry   Industry \ncountry1  industry1    7\n          industry2    0\ncountry2  industry1    8\n          industry2    6\nName: (country1, industry1), dtype: int64\n\n\nYou can also aggregate data using the MultiIndex. Therefore, you first have to group the data using groupby(), and then append the mathematical operation, e.g. .sum(). The attribute axis determines whether the DataFrame is grouped along rows (0) or columns (1). The attribute level determines by which Index the data is grouped.\n\n # axis=0: aggregate rows\nprint(df.groupby(axis=0,level=('Country')).sum())\n\nCountry   country1            country2          \nIndustry industry1 industry2 industry1 industry2\nCountry                                         \ncountry1         7         9         2         4\ncountry2        14        16         9         7\n\n\n\n# axis=1: aggregate columns\nprint(df.groupby(axis=1,level=('Country')).sum()) \n\nCountry             country1  country2\nCountry  Industry                     \ncountry1 industry1        13         4\n         industry2         3         2\ncountry2 industry1        16         6\n         industry2        14        10\n\n\nThese are just a few examples of working with MultiIndex in pandas. You can explore more advanced techniques and functions available in the pandas documentation."
   },
   {
     "objectID": "python_cheatsheet.html#joining-path-components",
@@ -89,5 +103,54 @@
     "title": "Getting started with Python + Jupyter Notebook",
     "section": "7.4 Specifying an Absolute Path in Windows with the os Library",
     "text": "7.4 Specifying an Absolute Path in Windows with the os Library\nIn Windows, absolute paths are specified differently compared to other operating systems due to the use of drive letters (e.g., C:). The os module in Python provides functions to work with these paths.\n\n7.4.1 Absolute Path in Windows\nTo specify an absolute path in Windows, you need to include the drive letter followed by a colon (:), and use double backslashes (\\\\) as the path separator. Here’s an example:\n\nimport os\n\n# Specify an absolute path in Windows\nabs_path = \"C:\\\\path\\\\to\\\\file.txt\"\nprint(abs_path)\n\nC:\\path\\to\\file.txt\n\n\nMake sure to escape the backslashes by using a double backslash (\\\\).\n\n\n7.4.2 Using Raw String\nAlternatively, you can use a raw string by adding an r prefix before the path string. This allows you to specify the path using single backslashes (\\) as the path separator. Here’s an example:\n\nimport os\n\n# Specify an absolute path in Windows using a raw string\nabs_path = r\"C:\\path\\to\\file.txt\"\nprint(abs_path)\n\nC:\\path\\to\\file.txt\n\n\nUsing a raw string is convenient as you don’t need to escape the backslashes.\n\n\n7.4.3 Converting to Windows Path\nIf you’re working with a path string that follows the forward slash (/) path separator convention used in other operating systems (e.g., Linux, macOS), you can convert it to a Windows path using the os.path.normpath() function:\n\nimport os\n\n# Convert a path to Windows format\npath = \"/path/to/file.txt\"\nwindows_path = os.path.normpath(path)\nprint(windows_path)\n\n/path/to/file.txt\n\n\nThe os.path.normpath() function automatically converts the path separator to double backslashes (\\\\).\nKeep in mind that when working with paths in Python, it’s recommended to use the os.path functions to ensure cross-platform compatibility."
+  },
+  {
+    "objectID": "python_cheatsheet.html#example-data",
+    "href": "python_cheatsheet.html#example-data",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "8.1 Example Data",
+    "text": "8.1 Example Data\nLet’s consider an example DataFrame with two columns: Country and Emissions. This data represents the emissions of each country.\n\nimport pandas as pd\n\ndata = {\n    'Country': ['USA', 'China', 'Russia', 'Germany', 'India'],\n    'Emissions': [5500, 8500, 4300, 3700, 3000]\n}\n\ndf = pd.DataFrame(data)"
+  },
+  {
+    "objectID": "python_cheatsheet.html#matplotlib",
+    "href": "python_cheatsheet.html#matplotlib",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "8.2 Matplotlib",
+    "text": "8.2 Matplotlib\nMatplotlib is a widely used plotting library in Python. It provides a flexible and comprehensive set of functions for creating various types of plots.\n\nimport matplotlib.pyplot as plt\n\nplt.bar(df['Country'], df['Emissions'])\nplt.xlabel('Country')\nplt.ylabel('Emissions')\nplt.title('Emissions by Country (Matplotlib)')\nplt.show()"
+  },
+  {
+    "objectID": "python_cheatsheet.html#plotly",
+    "href": "python_cheatsheet.html#plotly",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "8.3 Plotly",
+    "text": "8.3 Plotly\nPlotly is an interactive plotting library that allows you to create interactive, web-based visualizations. It provides a range of graph types and customization options.\n\nimport plotly.express as px\n\nfig = px.bar(df, x='Country', y='Emissions', title='Emissions by Country (Plotly)')\nfig.show()"
+  },
+  {
+    "objectID": "python_cheatsheet.html#plotnine-ggplot",
+    "href": "python_cheatsheet.html#plotnine-ggplot",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "8.4 Plotnine (ggplot)",
+    "text": "8.4 Plotnine (ggplot)\nPlotnine is a Python implementation of the popular R library ggplot2. It follows the grammar of graphics approach and provides a powerful and flexible system for creating visually appealing plots.\n\nfrom plotnine import ggplot, aes, geom_bar, labs\n\n(\n  ggplot(df, aes(x='Country', y='Emissions')) + \n      geom_bar(stat='identity') + \n      labs(title='Emissions by Country (Plotnine)')\n)\n\n\n\n\n&lt;Figure Size: (640 x 480)&gt;\n\n\nIn the example above, we use the example data to create a bar plot for emissions using each library. Matplotlib, Seaborn, Plotly, and Plotnine (ggplot) all generate the same bar plot, but they offer different levels of customization and interactivity.\nThese are just a few examples of the many plotting libraries available in Python. Depending on your specific needs and preferences, you can explore other libraries such as Bokeh, Altair, or Plotly Express to create various types of visualizations.\nRemember to install the necessary libraries using pip or conda before using them in your code."
+  },
+  {
+    "objectID": "python_cheatsheet.html#defining-functions",
+    "href": "python_cheatsheet.html#defining-functions",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "10.1 Defining Functions",
+    "text": "10.1 Defining Functions\nTo define a function in Python, you use the def keyword followed by the function name and parentheses. You can also specify parameters inside the parentheses if the function requires input values. The function body is indented below the function definition line.\n\ndef greet():\n    print(\"Hello, world!\")\n\ndef add_numbers(a, b):\n    return a + b\n\nIn this example, we define two functions. The greet() function doesn’t take any parameters and simply prints a greeting. The add_numbers() function takes two parameters a and b and returns their sum."
+  },
+  {
+    "objectID": "python_cheatsheet.html#using-functions",
+    "href": "python_cheatsheet.html#using-functions",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "10.2 Using Functions",
+    "text": "10.2 Using Functions\nOnce a function is defined, you can use it by calling its name followed by parentheses. If the function expects parameters, you can pass the necessary values inside the parentheses.\n\ngreet()  # Output: Hello, world!\n\nresult = add_numbers(5, 3)\nprint(result)  # Output: 8\n\nHello, world!\n8\n\n\nIn this example, we call the greet() function, which prints the greeting message. Then, we call the add_numbers() function with arguments 5 and 3, and the returned result is stored in the result variable. Finally, we print the value of result, which is 8."
+  },
+  {
+    "objectID": "python_cheatsheet.html#lambda-functions",
+    "href": "python_cheatsheet.html#lambda-functions",
+    "title": "Getting started with Python + Jupyter Notebook",
+    "section": "10.3 Lambda Functions",
+    "text": "10.3 Lambda Functions\nIn Python, a lambda function is a small anonymous function that doesn’t have a name. It can take any number of arguments but can only have one expression. Lambda functions are typically used when you need a simple, one-line function.\n\nadd = lambda x, y: x + y\nresult = add(2, 3)\nprint(result)  # Output: 5\n\n5\n\n\nIn this example, we define a lambda function add that takes two arguments x and y and returns their sum. We then call the lambda function and store the result in the result variable. Finally, we print the value of result, which is 5.\nLambda functions are useful when you need a function for a short, simple operation and don’t want to define a separate named function."
   }
 ]
